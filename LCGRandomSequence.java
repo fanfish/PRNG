@@ -1,3 +1,4 @@
+package com.jrj.util.random;
 
 /**
  * 32位线性同余随机数序列生成器
@@ -18,17 +19,18 @@ public class LCGRandomSequence {
 	
 	public int nextInt() {
 		//BSD formula -- rand is in range 0 to 2147483647.
-		int rand =mod((long)(1103515245*seed + 12345) % MAX_BOUND);
-		this.seed = rand;
+		int rand =(int) ((1103515245*(long)seed+12345) % MAX_BOUND);
+		this.seed =rand ;
 		return rand;
 	}
 	
 	private void dump() {
 		int counter = 0;
 		do {
-			System.out.println(" rand: "+ nextInt());
+			int rd = nextInt();
+			System.out.println(" rand: "+ rd);	
 			counter++;
-		} while (counter != 1000);
+		} while (counter != 100000);
 	}
 	
 	private int mod(long value) {
